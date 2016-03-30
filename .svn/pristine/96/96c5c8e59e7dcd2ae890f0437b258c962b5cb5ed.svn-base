@@ -1,0 +1,52 @@
+package ${package}.module.${moduleName}.vo;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import com.flame.core.global.data.vo.BaseVO;
+
+/** 
+ * @Company: 深圳市烈焰时代科技有限公司
+ * @File: ${package}.module.${moduleName}.vo.${classNameVO}.java
+ * @Description: ${classNameVO} 
+ * @Create: AutoCode ${date} 
+ * @version: V1.0 
+ */
+public class ${classNameVO} extends BaseVO implements Serializable {
+
+<#list columnInfoList as columnInfo>
+	/** ${columnInfo.comment} */
+	private ${columnInfo.dataType} ${columnInfo.name};
+</#list>
+
+	public ${classNameVO}(){ }
+
+	public ${classNameVO}(<#list columnInfoList as columnInfo>${columnInfo.dataType} ${columnInfo.name}<#if conlumnInfoCount!=columnInfo_index+1>, </#if></#list>) {
+	<#list columnInfoList as columnInfo>
+		this.${columnInfo.name} = ${columnInfo.name};
+	</#list>
+	}
+	
+	public String getId() {
+	    return this.${pkName};
+	}
+	
+
+<#list columnInfoList as columnInfo>
+	public ${columnInfo.dataType} get${columnInfo.getterSetterName}() {
+		return ${columnInfo.name};
+	}
+
+	public void set${columnInfo.getterSetterName}(${columnInfo.dataType} ${columnInfo.name}) {
+		this.${columnInfo.name} = ${columnInfo.name};
+	}
+</#list>
+
+	@Override
+	public String toString() {  
+		StringBuffer sb = new StringBuffer("${classNameVO} [");
+		sb<#list columnInfoList as columnInfo>.append(this.${columnInfo.name})</#list>;
+	    return sb.toString();
+	}  
+
+}

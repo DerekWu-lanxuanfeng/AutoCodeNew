@@ -1,0 +1,11 @@
+# Application global resources
+
+Application.name = AutoCode
+Application.title = \u81EA\u52A8\u4EE3\u7801\u751F\u6210\u5668 1.4
+Application.version = 1.4
+Application.vendor = derek
+Application.homepage = http://
+Application.description = Auto Code Generater
+Application.vendorId = DerekWu
+Application.id = AutoCodeGenerater
+Application.lookAndFeel = system

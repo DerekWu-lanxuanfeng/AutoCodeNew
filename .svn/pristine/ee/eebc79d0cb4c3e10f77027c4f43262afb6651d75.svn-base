@@ -1,0 +1,5 @@
+db_url=jdbc\:mysql\://192.168.0.107\:3306/suduku?useUnicode\=true&amp;characterEncoding\=UTF-8
+db_username=root
+db_password=123456
+
+obj_package =com.flame.sudu

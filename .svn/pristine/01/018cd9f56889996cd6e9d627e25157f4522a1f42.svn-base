@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.0
+Created-By: 10.0-b22 (Sun Microsystems Inc.)
+Main-Class: autocode.AutoCodeApp
+Class-Path: lib/appframework-1.0.3.jar lib/swing-worker-1.1.jar lib/my
+ sql-connector-java-5.1.5-bin.jar lib/freemarker.jar
+X-COMMENT: Main-Class will be added automatically by build
+

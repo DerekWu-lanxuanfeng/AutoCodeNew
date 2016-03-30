@@ -1,0 +1,50 @@
+package ${package}.module.${moduleName}.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import ${package}.module.${moduleName}.dao.I${className}DAO;
+import ${package}.module.${moduleName}.service.I${className}Service;
+import ${package}.module.${moduleName}.vo.${classNameVO};
+
+/** 
+ * @Company: 深圳市烈焰时代科技有限公司
+ * @File: ${package}.module.${moduleName}.service.impl.${className}Service.java
+ * @Description: ${className}Service 实现
+ * @Create: AutoCode ${date} 
+ * @version: V1.0 
+ */
+@Repository
+public class ${className}Service implements I${className}Service{
+
+	@Autowired
+	private I${className}DAO ${daoName}DAO;
+	
+	public int insert${className}(${classNameVO} ${varClassName}) {
+		return ${daoName}DAO.insert${className}(${varClassName});
+	}
+	
+	public ${classNameVO} get${className}ById(String ${pkName}) {
+		return (${classNameVO})${daoName}DAO.get${className}ById(${pkName});
+	}
+
+	public int update${className}(${classNameVO} ${varClassName}) {
+		return ${daoName}DAO.update${className}(${varClassName});
+	}
+
+	public int delete${className}ById(String ${pkName}) {
+		return ${daoName}DAO.delete${className}ById(${pkName});
+	}
+	
+	public List<${classNameVO}> get${className}List() {
+		return ${daoName}DAO.get${className}List();
+	}
+	
+	public List<${classNameVO}> get${className}ListByParams(Map<String, String> params) {
+		return ${daoName}DAO.get${className}ListByParams(params);
+	}
+
+}

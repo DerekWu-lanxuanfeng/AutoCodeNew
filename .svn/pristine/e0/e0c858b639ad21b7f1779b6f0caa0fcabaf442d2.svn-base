@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="${className}">
+
+	<sql id="${className}Columns"> <#list columnInfoList as columnInfo>${columnInfo.columnName} AS ${columnInfo.name}<#if conlumnInfoCount!=columnInfo_index+1>, </#if></#list> </sql>
+
+	<insert id="insert${className}" parameterType="${classNameVO}">
+		insert into ${tableName}(<#list columnInfoList as columnInfo>${columnInfo.columnName}<#if conlumnInfoCount!=columnInfo_index+1>, </#if></#list>) values(<#list columnInfoList as columnInfo>#${"{"}${columnInfo.name}${"}"}<#if conlumnInfoCount!=columnInfo_index+1>, </#if></#list>)
+	</insert>
+	
+	<select id="get${className}ById" parameterType="String" resultType="${classNameVO}">
+		select <#list columnInfoList as columnInfo>${columnInfo.columnName} AS ${columnInfo.name}<#if conlumnInfoCount!=columnInfo_index+1>, </#if></#list> from ${tableName} where ${pkColumnName}=#${"{"}${pkName}${"}"}
+	</select>
+
+	<update id="update${className}" parameterType="${classNameVO}">
+		update ${tableName} set <#list columnInfoList as columnInfo>${columnInfo.columnName}=#${"{"}${columnInfo.name}${"}"}<#if conlumnInfoCount!=columnInfo_index+1>, </#if></#list> where ${pkColumnName}=#${"{"}${pkName}${"}"}
+	</update>
+	
+	<delete id="delete${className}ById" parameterType="String">
+		delete from ${tableName} where ${pkColumnName}=#${"{"}${pkName}${"}"}
+	</delete>
+
+	<select id="get${className}List" resultType="${classNameVO}">
+		select <include refid="${className}Columns"/> from ${tableName}
+	</select>
+	
+	<select id="get${className}ListByParams" resultType="${classNameVO}" parameterType="Map">
+		select <include refid="${className}Columns"/> from ${tableName}
+		<where> 
+		    <if test="${pkColumnName} != null">
+		         ${pkColumnName} = #${"{"}${pkName}${"}"}
+		    </if> 
+		</where>
+	</select>
+
+</mapper>
+
+<typeAlias alias="${classNameVO}" type="${package}.module.${moduleName}.vo.${classNameVO}" />
+
+<mapper resource="${packageFile}/module/${moduleName}/dao/sqlmap/${className}.xml" />

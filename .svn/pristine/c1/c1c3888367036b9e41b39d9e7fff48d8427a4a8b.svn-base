@@ -1,0 +1,54 @@
+package ${package}.module.${moduleName}.dao.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.flame.core.global.config.GameConfig;
+import com.flame.core.global.data.dao.IBaseDAO;
+import com.flame.core.global.util.GenUtil;
+import ${package}.module.${moduleName}.dao.I${className}DAO;
+import ${package}.module.${moduleName}.vo.${classNameVO};
+
+/** 
+ * @Company: 深圳市烈焰时代科技有限公司
+ * @File: ${package}.module.${moduleName}.dao.${className}DAO.java
+ * @Description: ${className}DAO 实现
+ * @Create: AutoCode ${date} 
+ * @version: V1.0 
+ */
+@Repository
+public class ${className}DAO implements I${className}DAO{
+
+	@Autowired
+	private IBaseDAO baseDAO;
+	
+	public int insert${className}(${classNameVO} ${varClassName}) {
+		return baseDAO.insert(${varClassName}.getDSKey(), "${className}.insert${className}", ${varClassName});
+	}
+	
+	public ${classNameVO} get${className}ById(String ${pkName}) {
+		return (${classNameVO})baseDAO.get(GenUtil.getDSKey(${pkName}), "${className}.get${className}ById", ${pkName});
+	}
+
+	public int update${className}(${classNameVO} ${varClassName}) {
+		return baseDAO.update(${varClassName}.getDSKey(), "${className}.update${className}", ${varClassName});
+	}
+
+	public int delete${className}(${classNameVO} ${varClassName}) {
+		return baseDAO.delete(${varClassName}.getDSKey(), "${className}.delete${className}ById", ${classNameVO}.getId());
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<${classNameVO}> get${className}List(Integer dsKey) {
+		return baseDAO.queryForList(dsKey, "${className}.get${className}List");
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<${classNameVO}> get${className}ListByParams(Integer dsKey, Map<String, String> params) {
+		return baseDAO.queryForListByParams(dsKey, "${className}.get${className}ListByParams", params);
+	}
+
+}
